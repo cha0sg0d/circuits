@@ -52,6 +52,16 @@ template Main() {
     comp2.in[1] <== rSq
     comp2.out === 1;
 
+    /* check x1^2 + y1^2 < r^2 */
+    component comp1 = LessThan(64);
+    signal x1Sq;
+    signal y1Sq;
+    x1Sq <== x1 * x1;
+    y1Sq <== y1 * y1;
+    comp1.in[0] <== x1Sq + y1Sq
+    comp1.in[1] <== rSq
+    comp1.out === 1;
+
     /* check (x1-x2)^2 + (y1-y2)^2 <= distMax^2 */
 
     signal diffX;
